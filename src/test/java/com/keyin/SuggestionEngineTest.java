@@ -17,7 +17,7 @@ public class SuggestionEngineTest {
     private final SuggestionEngine suggestionEngine = new SuggestionEngine();
 
     @Test
-    @DisplayName("Test Suggestion With Given Word")
+    @DisplayName("Test Suggestion Engine With Given Word")
     public void testSuggestion() throws IOException, URISyntaxException {
 
         //SuggestionEngine suggestionEngine = new SuggestionEngine();
@@ -32,6 +32,7 @@ public class SuggestionEngineTest {
     }
 
     @Test
+    @DisplayName("Test Suggestion Engine Failure")
     public void testSuggestionFail() throws IOException, URISyntaxException {
        //SuggestionEngine suggestionEngine = new SuggestionEngine();
         URI uri =  ClassLoader.getSystemResource("words.txt").toURI();
@@ -44,6 +45,7 @@ public class SuggestionEngineTest {
     }
 
     @Test
+    @DisplayName("Test Suggestion Engine With Capital Words")
     public void testSuggestionCaseSensitive() throws IOException, URISyntaxException {
         //SuggestionEngine suggestionEngine = new SuggestionEngine();
         URI uri =  ClassLoader.getSystemResource("words.txt").toURI();
@@ -52,10 +54,11 @@ public class SuggestionEngineTest {
 
         suggestionEngine.loadDictionaryData(Paths.get(path.toUri()));
 
-        Assertions.assertTrue(suggestionEngine.generateSuggestions("Clas").contains("class"));
+        Assertions.assertTrue(suggestionEngine.generateSuggestions("Hell-").contains("hello"));
     }
 
     @Test
+    @DisplayName("Test If Dictionary Data Loads")
     public void testLoadDictionaryData() throws URISyntaxException, IOException {
 
         URI uri =  ClassLoader.getSystemResource("words.txt").toURI();
@@ -67,6 +70,7 @@ public class SuggestionEngineTest {
     }
 
     @Test
+    @DisplayName("Test Load Dictionary Data Failure")
     public void testLoadDictionaryDataFail() throws URISyntaxException, IOException {
         Assertions.assertFalse(suggestionEngine.loadDictionaryData( Path.of("noWords.txt")));
     }
