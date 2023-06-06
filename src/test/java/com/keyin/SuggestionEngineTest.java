@@ -2,6 +2,7 @@ package com.keyin;
 
 import com.keyin.SuggestionEngine;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class SuggestionEngineTest {
     private final SuggestionEngine suggestionEngine = new SuggestionEngine();
 
     @Test
+    @DisplayName("Test Suggestion With Given Word")
     public void testSuggestion() throws IOException, URISyntaxException {
 
         //SuggestionEngine suggestionEngine = new SuggestionEngine();
